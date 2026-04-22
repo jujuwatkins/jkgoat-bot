@@ -26,11 +26,20 @@ MESSAGES = [
     "Elder loves penis",
 ]
 
-# 🎲 /hi command
-@bot.tree.command(name="hi", description="Say hi to the bot", guild=discord.Object(id=1478166064926818354))
-async def hi(interaction: discord.Interaction):
-    responses = [
-        "What do you want dick head",
+import time
+import random
+import discord
+from discord.ext import commands
+
+intents = discord.Intents.default()
+bot = commands.Bot(command_prefix="!", intents=intents)
+
+# stores last time each user used /hi
+last_hi_time = {}
+COOLDOWN_SECONDS = 30
+
+responses = [
+"What do you want dick head",
         "wazzap", 
         "fuck off",
         "kill yourself",
@@ -38,8 +47,35 @@ async def hi(interaction: discord.Interaction):
         "your IP is 676.767.676.7676",
         "you live at 67 cock lover st.",
         "I'm gonna fuck you in the ass"
-    ]    
+]
+
+@bot.tree.command(name="hi", description="Say hi to the bot")
+async def hi(interaction: discord.Interaction):
+    user_id = interaction.user.id
+    current_time = time.time()
+
+    # check cooldown
+    if user_id in last_hi_time:
+        time_since = current_time - last_hi_time[user_id]
+
+        if time_since < COOLDOWN_SECONDS:
+            await interaction.response.send_message(
+                "can you stop its getting annoying",
+                ephemeral=True
+            )
+            return
+
+    # update last used time
+    last_hi_time[user_id] = current_time
+
+    # random response
     await interaction.response.send_message(random.choice(responses))
+
+
+@bot.event
+async def on_ready():
+    print(f"Logged in as {bot.user}")
+    await bot.tree.sync()
 
 
 @bot.event

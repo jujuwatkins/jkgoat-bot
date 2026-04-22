@@ -30,10 +30,16 @@ MESSAGES = [
 @bot.tree.command(name="hi", description="Say hi to the bot", guild=discord.Object(id=1478166064926818354))
 async def hi(interaction: discord.Interaction):
     responses = [
-        "what dumb nut",
-        "what do you want",
-        "hey can we meet up oh wait im a bot who feels no emotion hahah *sigh*"
-    ]
+        "What do you want dick head",
+        "wazzap", 
+        "fuck off",
+        "kill yourself",
+        "shut the fuck up",
+        "your IP is 676.767.676.7676",
+        "you live at 67 cock lover st.",
+        "I'm gonna fuck you in the ass"
+    
+    
     await interaction.response.send_message(random.choice(responses))
 
 

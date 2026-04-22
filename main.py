@@ -38,8 +38,7 @@ async def hi(interaction: discord.Interaction):
         "your IP is 676.767.676.7676",
         "you live at 67 cock lover st.",
         "I'm gonna fuck you in the ass"
-    
-    
+        
     await interaction.response.send_message(random.choice(responses))
 
 

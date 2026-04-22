@@ -22,6 +22,15 @@ MESSAGES = [
     "fuck shit bitch damn cock sucker pussy asshole cunt",
     "Elder loves penis",
 ]
+@bot.tree.command(name="hi", description="Say hi to the bot")
+async def hi(interaction: discord.Interaction):
+    responses = [
+        "what dumb nut",
+        "what do you want",
+        "hey can we meet up oh wait im a bot who feels no emotion hahah *sigh*"
+    ]
+
+    await interaction.response.send_message(random.choice(responses))
 
 @bot.event
 async def on_ready():

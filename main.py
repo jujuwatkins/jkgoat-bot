@@ -27,7 +27,7 @@ MESSAGES = [
 ]
 
 # 🎲 /hi command
-@bot.tree.command(name="hi", description="Say hi to the bot")
+@bot.tree.command(name="hi", description="Say hi to the bot"), guild=discord.Object(id=1478166064926818354))
 async def hi(interaction: discord.Interaction):
     responses = [
         "what dumb nut",

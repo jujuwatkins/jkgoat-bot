@@ -34,7 +34,7 @@ async def hourly_check():
 
     if channel:
         # 1/100 chance
-        if random.randint(1, 100) == 1:
+        if random.randint(1, 10) == 1:
             await channel.send(random.choice(MESSAGES))
 
 bot.run(os.getenv("TOKEN"))

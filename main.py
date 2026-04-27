@@ -37,8 +37,10 @@ MESSAGES = [
 # ======================
 # /HI SYSTEM
 # ======================
-last_hi_time = {}
-COOLDOWN_SECONDS = 30
+import time
+import random
+
+last_used = {}
 
 hi_responses = [
     "What do you want dick head",
@@ -50,24 +52,22 @@ hi_responses = [
         "you live at 67 cock lover st.",
         "I'm gonna fuck you in the ass"
 ]
-
-@bot.tree.command(name="hi", description="Say hi to the bot")
+@bot.tree.command(name="hi", description="Say hi")
 async def hi(interaction: discord.Interaction):
     user_id = interaction.user.id
     now = time.time()
 
-    # cooldown check
-    if user_id in last_hi_time:
-        if now - last_hi_time[user_id] < COOLDOWN_SECONDS:
+    if user_id in last_used:
+        if now - last_used[user_id] < 30:
             await interaction.response.send_message(
                 "can you stop its getting annoying",
                 ephemeral=True
             )
             return
 
-    last_hi_time[user_id] = now
+    last_used[user_id] = now
 
-    await interaction.response.send_message(random.choice(hi_responses))
+    await interaction.response.send_message(random.choice(HI_MESSAGES))
 
 # ======================
 # ON READY (IMPORTANT FIX)

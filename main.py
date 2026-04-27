@@ -37,10 +37,22 @@ MESSAGES = [
 # ======================
 # /HI SYSTEM
 # ======================
-import time
+import discord
+from discord.ext import commands
 import random
+import time
 
+# 🔑 PUT YOUR BOT TOKEN HERE
+TOKEN = MTQ5Mjk5OTIxOTE2MDU0NzM2OA.GYJaD8.kK8NIh7dUmFjFNu9t5bbq7MFrVzLJK-KfzNPSM
+
+# ⚙️ BOT SETUP
+intents = discord.Intents.default()
+bot = commands.Bot(command_prefix="!", intents=intents)
+
+# ⏱️ COOLDOWN TRACKING
 last_used = {}
+
+# 💬 HI RESPONSES
 
 hi_responses = [
     "What do you want dick head",
@@ -52,11 +64,23 @@ hi_responses = [
         "you live at 67 cock lover st.",
         "I'm gonna fuck you in the ass"
 ]
+# ✅ BOT READY EVENT (SYNC COMMANDS)
+@bot.event
+async def on_ready():
+    print(f"Logged in as {bot.user}")
+    try:
+        synced = await bot.tree.sync()
+        print(f"Synced {len(synced)} commands")
+    except Exception as e:
+        print(e)
+
+# 👋 SLASH COMMAND
 @bot.tree.command(name="hi", description="Say hi")
 async def hi(interaction: discord.Interaction):
     user_id = interaction.user.id
     now = time.time()
 
+    # 🚫 cooldown check
     if user_id in last_used:
         if now - last_used[user_id] < 30:
             await interaction.response.send_message(
@@ -65,10 +89,14 @@ async def hi(interaction: discord.Interaction):
             )
             return
 
+    # ⏳ update time
     last_used[user_id] = now
 
+    # 🎲 send random message
     await interaction.response.send_message(random.choice(HI_MESSAGES))
 
+# ▶️ RUN BOT
+bot.run(TOKEN)
 # ======================
 # ON READY (IMPORTANT FIX)
 # ======================

@@ -32,8 +32,8 @@ MESSAGES = [
     "I nutted",
     "fuck shit bitch damn cock sucker pussy asshole cunt",
     "Elder loves penis",
-]
-
+    "migger"
+]   
 # ======================
 # /HI SYSTEM
 # ======================

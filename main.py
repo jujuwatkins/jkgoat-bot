@@ -95,7 +95,7 @@ async def hourly_message():
     channel = bot.get_channel(CHANNEL_ID)
 
     if channel:
-        if random.randint(1, 1) == 1:
+        if random.randint(1, 100) == 1:
             await channel.send(random.choice(MESSAGES))
 
 # ======================

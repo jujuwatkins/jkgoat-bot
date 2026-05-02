@@ -21,7 +21,21 @@ GUILD_ID = 1478166064926818354
 # ======================
 # MESSAGE SYSTEM
 # ======================
-MESSAGES =  [   "I hate Lip"]   
+MESSAGES =  [  
+    "I love Crying Tip A. Vane",
+    "AEW is better than WRESTLE! and you aren't changing my mind",
+    "I hate Lip",
+    "Jakobe was born yesterday",
+    "MJF is the goat",
+    "I farted",
+    "Mulberry County is better than Doors",
+    "Doom Doom Doom Sahur",
+    "0 big booty latinas 😭😭😭😭"
+    "I nutted",
+    "fuck shit bitch damn cock sucker pussy asshole cunt",
+    "Elder loves penis",
+    "migger"  
+]   
 
 # ======================
 # /HI SYSTEM
@@ -81,7 +95,7 @@ async def hourly_message():
     channel = bot.get_channel(CHANNEL_ID)
 
     if channel:
-        if random.randint(1, 1) == 1:
+        if random.randint(1, 100) == 1:
             await channel.send(random.choice(MESSAGES))
 
 # ======================

@@ -30,7 +30,7 @@ MESSAGES =  [
     "I farted",
     "Mulberry County is better than Doors",
     "Doom Doom Doom Sahur",
-    "0 big booty latinas 😭😭😭😭"
+    "0 big booty latinas 😭😭😭😭",
     "I nutted",
     "fuck shit bitch damn cock sucker pussy asshole cunt",
     "Elder loves penis",
